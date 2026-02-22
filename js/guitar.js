@@ -132,12 +132,12 @@ function noteAt(openNoteSharp, fret){
 }
 
 const tuning = [
-  { string: "6(E)", open: "E" },
-  { string: "5(A)", open: "A" },
-  { string: "4(D)", open: "D" },
-  { string: "3(G)", open: "G" },
+  { string: "1(E)", open: "E" }, // high E
   { string: "2(B)", open: "B" },
-  { string: "1(E)", open: "E" }
+  { string: "3(G)", open: "G" },
+  { string: "4(D)", open: "D" },
+  { string: "5(A)", open: "A" },
+  { string: "6(E)", open: "E" }  // low E
 ];
 
 const maxFret = 12;
@@ -246,7 +246,7 @@ function renderFretboard(){
       const y = (rect.top - gridRect.top) + (rect.height / 2);
 
       const line = document.createElement("div");
-      line.className = "fb-rowline s" + (6 - r);
+     line.className = "fb-rowline s" + (r + 1);
       line.style.top = `${y}px`;
       grid.appendChild(line);
     }

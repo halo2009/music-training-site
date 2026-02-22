@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Piano Composition Lab</title>
+
+  <link rel="stylesheet" href="css/piano.css" />
+  <script src="js/piano.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="back" href="index.html">← Home</a>
+
+    <div class="top-title">
+      <div class="h1">Piano Composition Lab</div>
+      <div class="sub">Keyboard · Circle of Fifths · Chords · Scales</div>
+    </div>
+
+    <div class="top-actions">
+      <!-- 필요하면 나중에 추가 버튼 넣기 -->
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ✅ 피아노 지판 -->
+    <section class="card">
+      <div class="card-head">
+        <h2>Playable Piano Keyboard</h2>
+        <div class="mini">
+          시작 옥타브: <span id="octLabel" class="accent">3</span>
+          <span class="muted">(총 3옥타브)</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="octDown" type="button">시작 옥타브 -</button>
+        <button id="octUp" type="button">시작 옥타브 +</button>
+
+        <button id="waveBtn" type="button" title="소리 질감 변경">
+          파형: <span id="waveLabel">triangle</span>
+        </button>
+      </div>
+
+      <div class="piano-shell">
+        <div id="piano" class="piano" aria-label="piano keyboard"></div>
+      </div>
+
+      <div class="note">
+        * 처음 한 번은 클릭/터치 후에 소리가 열림 (브라우저 정책)<br />
+        * 건반에 글자 없음 + 선택/복사 팝업 방지 처리
+      </div>
+    </section>
+
+    <!-- 5도권 -->
+    <section class="card">
+      <div class="card-head">
+        <h2>Circle of Fifths</h2>
+      </div>
+
+      <div class="controls">
+        <button type="button" onclick="showCircle('up')">상행 (Perfect 5th ↑)</button>
+        <button type="button" onclick="showCircle('down')">하행 (Perfect 5th ↓)</button>
+      </div>
+
+      <div class="result" id="circleResult"></div>
+    </section>
+
+    <!-- 코드 -->
+    <section class="card">
+      <div class="card-head">
+        <h2>Chord Tone Builder</h2>
+      </div>
+
+      <div class="controls">
+        <select id="root"></select>
+
+        <select id="chordType">
+          <option>M</option>
+          <option>m</option>
+          <option>dim</option>
+          <option>aug</option>
+
+          <option>7</option>
+          <option>M7</option>
+          <option>m7</option>
+          <option>dim7</option>
+          <option>m7(b5)</option>
+
+          <option>sus2</option>
+          <option>sus4</option>
+          <option>7sus4</option>
+
+          <option>6</option>
+          <option>m6</option>
+
+          <option>mM7</option>
+
+          <option>7(#5)</option>
+          <option>M7(#5)</option>
+
+          <option>add9</option>
+          <option>madd9</option>
+        </select>
+
+        <button type="button" onclick="buildChord()">구성음 보기</button>
+      </div>
+
+      <div class="result" id="chordResult"></div>
+    </section>
+
+    <!-- 스케일 -->
+    <section class="card">
+      <div class="card-head">
+        <h2>Scale Viewer</h2>
+      </div>
+
+      <div class="controls">
+        <select id="scaleRoot"></select>
+
+        <select id="scaleType">
+          <option>Major (Ionian)</option>
+
+          <option>Natural Minor (Aeolian)</option>
+          <option>Harmonic Minor</option>
+          <option>Melodic Minor</option>
+
+          <option>Dorian</option>
+          <option>Phrygian</option>
+          <option>Lydian</option>
+          <option>Mixolydian</option>
+          <option>Locrian</option>
+        </select>
+
+        <button type="button" onclick="showScale()">스케일 보기</button>
+      </div>
+
+      <div class="result" id="scaleResult"></div>
+    </section>
+
+  </main>
+</body>
+</html>

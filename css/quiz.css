@@ -1,0 +1,75 @@
+/* theme.css 위에 얹는 quiz 전용 */
+
+.qbox{
+  margin-top: 12px;
+}
+
+.question{
+  font-size: clamp(18px, 4.8vw, 28px);
+  margin-top: 8px;
+  margin-bottom: 10px;
+  color: var(--accent2);
+  word-break: break-word;
+  font-weight: 950;
+}
+
+.choices{
+  display:grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.choiceBtn{
+  width: 100%;
+  text-align:left;
+  padding: 12px 14px;
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+  color: var(--text);
+  cursor:pointer;
+  font-weight: 900;
+}
+.choiceBtn:hover{ filter: brightness(1.12); }
+
+.inputRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 10px;
+  align-items:center;
+}
+
+#answerInput{
+  flex: 1 1 260px;
+  min-width: 200px;
+}
+
+.result{
+  margin-top: 10px;
+  min-height: 24px;
+  font-weight: 900;
+  color: var(--muted);
+}
+
+.score{
+  margin-top: 8px;
+  color: var(--accent2);
+  font-weight: 950;
+}
+
+.progress{
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  margin: 16px 0 0 0;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition:width 0.3s;
+}

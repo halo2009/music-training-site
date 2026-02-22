@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Guitar Training System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- UI 통일 테마 -->
+  <link rel="stylesheet" href="css/theme.css">
+  <!-- 기타 페이지 전용 -->
+  <link rel="stylesheet" href="css/guitar.css">
+
+  <!-- JS 연결 (defer 필수) -->
+  <script src="js/guitar.js" defer></script>
+</head>
+
+<body>
+  <!-- ✅ 공통 Topbar + Home 버튼 -->
+  <header class="topbar">
+    <a class="back" href="index.html">← Home</a>
+
+    <div class="top-title">
+      <div class="h1">Guitar Training</div>
+      <div class="sub">Chords · Strum · Metronome · Fretboard</div>
+    </div>
+
+    <div class="top-actions"></div>
+  </header>
+
+  <!-- ✅ 공통 레이아웃 폭/패딩 -->
+  <main class="wrap">
+
+    <!-- 코드 -->
+    <section class="section card">
+      <div class="card-head">
+        <h2>랜덤 코드 세트 (코드 폼 1회씩)</h2>
+      </div>
+
+      <div class="controls">
+        <button onclick="generateCodeSet()">GENERATE</button>
+      </div>
+
+      <div id="codeDisplay" class="display"></div>
+    </section>
+
+    <!-- 스트로크 -->
+    <section class="section card">
+      <div class="card-head">
+        <h2>스트로크 패턴 (쉼표 포함)</h2>
+      </div>
+
+      <div class="controls">
+        <button onclick="generateStroke()">GENERATE</button>
+      </div>
+
+      <div id="strokeDisplay" class="grid"></div>
+    </section>
+
+    <!-- 메트로놈 -->
+    <section class="section card">
+      <div class="card-head">
+        <h2>메트로놈</h2>
+        <div class="muted">BPM</div>
+      </div>
+
+      <div class="controls">
+        <input type="number" id="bpm" value="80" min="30" max="260">
+        <button id="startBtn" onclick="startMetro()">START</button>
+        <button id="stopBtn" onclick="stopMetro()" disabled>STOP</button>
+      </div>
+    </section>
+
+    <!-- 지판 -->
+    <section class="section card">
+      <div class="card-head">
+        <h2>기타 지판 음계</h2>
+        <div class="muted">Filter / Scale</div>
+      </div>
+
+      <div class="controls">
+        <div class="group">
+          <button onclick="showAllFretboard()">전체 보기</button>
+          <button onclick="resetFretboardFilter()">필터 초기화</button>
+        </div>
+
+        <div class="group">
+          <label class="muted">원하는 음:</label>
+          <input id="noteFilter" placeholder="예: F# 또는 Gb 또는 C" style="width:min(260px, 80vw);">
+          <button onclick="applySingleNoteFilter()">이 음만 보기</button>
+        </div>
+
+        <div class="group">
+          <label class="muted">스케일:</label>
+          <select id="scaleRoot"></select>
+          <select id="scaleType">
+            <option value="Major">Major</option>
+            <option value="Natural Minor">Natural Minor</option>
+            <option value="Major Pentatonic">Major Pentatonic</option>
+            <option value="Minor Pentatonic">Minor Pentatonic</option>
+            <option value="Blues">Blues</option>
+            <option value="Dorian">Dorian</option>
+            <option value="Phrygian">Phrygian</option>
+            <option value="Lydian">Lydian</option>
+            <option value="Mixolydian">Mixolydian</option>
+            <option value="Locrian">Locrian</option>
+          </select>
+          <button onclick="applyScaleFilter()">스케일만 보기</button>
+        </div>
+      </div>
+
+      <div class="hint muted">
+        * 표기는 <b>#/b</b>를 함께 보여준다. 입력은 <b>#</b>든 <b>b</b>든 하나만 맞아도 된다.
+      </div>
+
+      <div class="fretboard-wrap">
+        <div class="fretboard" id="fretboardGrid"></div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

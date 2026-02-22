@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Theory Quiz</title>
+
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/quiz.css">
+  <script src="js/quiz.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="back" href="index.html">← Home</a>
+
+    <div class="top-title">
+      <div class="h1">Music Theory Quiz</div>
+      <div class="sub">Chord · Scale · Key Signature</div>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn" type="button" onclick="startQuiz()">START</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="card-head">
+        <h2>Mode</h2>
+        <div class="muted">총 10문제</div>
+      </div>
+
+      <div class="controls">
+        <select id="quizType">
+          <option value="chordInput">코드 구성음 (입력)</option>
+          <option value="chordChoice">코드 구성음 (선택)</option>
+          <option value="scaleName">스케일 이름 맞추기</option>
+          <option value="scaleNotes">스케일 구성음 맞추기</option>
+          <option value="keySigToKey">조표 → Key</option>
+          <option value="keyToKeySig">Key → 조표</option>
+        </select>
+
+        <button class="btn" type="button" onclick="startQuiz()">퀴즈 시작</button>
+      </div>
+
+      <div class="qbox">
+        <div id="question" class="question"></div>
+        <div id="choices" class="choices"></div>
+
+        <div class="inputRow">
+          <input id="answerInput" placeholder="정답 입력 (예: C E G)" />
+          <button class="btn" id="submitBtn" type="button" onclick="submitAnswer()">제출</button>
+        </div>
+
+        <div id="result" class="result"></div>
+        <div id="score" class="score"></div>
+
+        <div class="progress">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
